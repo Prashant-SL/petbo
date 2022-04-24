@@ -7,7 +7,7 @@ app.use(express.json());
 
 const connect = () => {
 	return mongoose.connect(
-		'mongodb+srv://prashant:prashant@cluster0.xjxbs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+		'mongodb+srv://prashant:prashant@cluster0.xjxbs.mongodb.net/petApp?retryWrites=true&w=majority'
 	);
 };
 

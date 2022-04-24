@@ -1,21 +1,28 @@
 const express = require('express');
-const User = require('../models/user');
+const Listing = require('../models/listing.model');
 // const app = express();
 
 const router = express.Router();
 router.get('/', async (req, res) => {
 	try {
-		const users = await User.find().lean().exec();
-
+		const users = await Listing.find().lean().exec();
+		return res.send(users);
+	} catch (e) {
+		return res.send(e.message);
+	}
+});
+router.get('/:id', async (req, res) => {
+	try {
+		const users = await Listing.findById();
 		return res.send(users);
 	} catch (e) {
 		return res.send(e.message);
 	}
 });
 
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
 	try {
-		const users = await User.create(req.body);
+		const users = await Listing.create(req.body);
 		return res.send(users);
 	} catch (e) {
 		console.log(e.message);
