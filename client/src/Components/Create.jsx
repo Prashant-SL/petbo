@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Create = () => {
-	const initValue = {
+	const initialValue = {
 		id: '',
 		name: '',
 		city: '',
@@ -12,7 +12,7 @@ const Create = () => {
 		rating: '',
 	};
 
-	const [formData, setFormdata] = useState(initValue);
+	const [formData, setFormdata] = useState(initialValue);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -20,11 +20,20 @@ const Create = () => {
 		setFormdata({ ...formData, [name]: value });
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('Submitted button');
+		console.log(e);
+	};
+
 	return (
 		<>
 			<br />
 			{/* onSubmit={handleSubmit} */}
-			<form style={{ display: 'grid', justifyContent: 'center' }}>
+			<form
+				onSubmit={handleSubmit}
+				style={{ display: 'grid', justifyContent: 'center' }}
+			>
 				<h1>Create New Pet Board</h1>
 				<input
 					name="id"
@@ -51,6 +60,7 @@ const Create = () => {
 					placeholder="Enter Address"
 				/>
 				<select onChange={handleChange} name="capacity">
+					<option name="5">Select Capacity</option>
 					<option name="5">5-10</option>
 					<option name="10">10-15</option>
 				</select>
@@ -72,7 +82,7 @@ const Create = () => {
 					placeholder="Enter Rating"
 				/>
 				<br />
-				<input name="submit" type="submit" placeholder="Create" />
+				<input name="submit" type="submit" value="submit" />
 			</form>
 		</>
 	);
