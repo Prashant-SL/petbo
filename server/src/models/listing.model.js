@@ -5,9 +5,9 @@ const listingSchema = new mongoose.Schema({
 	name: { type: String, required: true },
 	city: { type: String, required: true },
 	address: { type: String, required: true },
-	capacity: { type: Number, required: false },
+	capacity: { type: String, required: false },
 	cost: { type: Number, required: false },
-	verified: { type: Boolean, required: false },
+	verified: { type: String, required: false },
 	rating: { type: Number, required: false },
 });
 

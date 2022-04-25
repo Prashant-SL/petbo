@@ -21,6 +21,8 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
+	// const { id, name, city, address, capacity, cost, verified, rating } =
+	// 	req.body;
 	try {
 		const users = await Listing.create(req.body);
 		return res.send(users);
