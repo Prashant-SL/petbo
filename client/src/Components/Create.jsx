@@ -26,12 +26,38 @@ const Create = () => {
 		console.log(e);
 	};
 
+	const PostData = async (e) => {
+		e.preventDefault();
+		const { id, name, city, address, capacity, cost, verified, rating } =
+			formData;
+		const res = await fetch('http://localhost:5000/listing/create', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				id,
+				name,
+				city,
+				address,
+				capacity,
+				cost,
+				verified,
+				rating,
+			}),
+		});
+		// console.log('formData:', formData);
+		const response = await res.json();
+		console.log('response:', response);
+	};
+
 	return (
 		<>
 			<br />
 			{/* onSubmit={handleSubmit} */}
 			<form
 				onSubmit={handleSubmit}
+				method="POST"
 				style={{ display: 'grid', justifyContent: 'center' }}
 			>
 				<h1>Create New Pet Board</h1>
@@ -82,7 +108,9 @@ const Create = () => {
 					placeholder="Enter Rating"
 				/>
 				<br />
-				<input name="submit" type="submit" value="submit" />
+				<button onClick={PostData} name="submit" type="submit" value="submit">
+					Create
+				</button>
 			</form>
 		</>
 	);

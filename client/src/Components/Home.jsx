@@ -3,9 +3,9 @@ import axios from 'axios';
 
 const Home = () => {
 	const [data, setData] = useState([]);
-	const getData = async (data) => {
-		const res = await axios.get('http://localhost:5050/listing/');
-	};
+	// const getData = async (data) => {
+	// 	// const res = await axios.get('http://localhost:5000/listing');
+	// };
 	return (
 		<>
 			<table>
