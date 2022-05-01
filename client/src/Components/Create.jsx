@@ -23,13 +23,11 @@ const Create = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log('Submitted button');
-		console.log(e);
 	};
 
 	const PostData = async (e) => {
 		e.preventDefault();
-		const { id, name, city, address, capacity, cost, verified, rating } =
-			formData;
+		const { id, name, city, address, capacity, cost, verified, rating } = formData;
 		const res = await fetch('http://localhost:5000/listing/create', {
 			method: 'POST',
 			headers: {
@@ -57,58 +55,53 @@ const Create = () => {
 			{/* onSubmit={handleSubmit} */}
 			<form
 				onSubmit={handleSubmit}
-				method="POST"
+				method='POST'
 				style={{ display: 'grid', justifyContent: 'center' }}
 			>
 				<h1>Create New Pet Board</h1>
+				<input name='id' type='number' placeholder='Enter ID' onChange={handleChange} />
 				<input
-					name="id"
-					type="number"
-					placeholder="Enter ID"
+					name='name'
 					onChange={handleChange}
+					type='string'
+					placeholder='Enter Name'
 				/>
 				<input
-					name="name"
+					name='city'
 					onChange={handleChange}
-					type="string"
-					placeholder="Enter Name"
+					type='string'
+					placeholder='Enter City'
 				/>
 				<input
-					name="city"
+					name='address'
 					onChange={handleChange}
-					type="string"
-					placeholder="Enter City"
+					type='string'
+					placeholder='Enter Address'
 				/>
-				<input
-					name="address"
-					onChange={handleChange}
-					type="string"
-					placeholder="Enter Address"
-				/>
-				<select onChange={handleChange} name="capacity">
-					<option name="5">Select Capacity</option>
-					<option name="5">5-10</option>
-					<option name="10">10-15</option>
+				<select onChange={handleChange} name='capacity'>
+					<option name='5'>Select Capacity</option>
+					<option name='5'>5-10</option>
+					<option name='10'>10-15</option>
 				</select>
 				<input
-					name="cost"
+					name='cost'
 					onChange={handleChange}
-					type="number"
-					placeholder="Enter Cost Per Day"
+					type='number'
+					placeholder='Enter Cost Per Day'
 				/>
 				<select onChange={handleChange}>
-					<option name="">Verified?</option>
-					<option name="yes">Yes</option>
-					<option name="no">No</option>
+					<option name=''>Verified?</option>
+					<option name='yes'>Yes</option>
+					<option name='no'>No</option>
 				</select>
 				<input
 					onChange={handleChange}
-					name="rating"
-					type="number"
-					placeholder="Enter Rating"
+					name='rating'
+					type='number'
+					placeholder='Enter Rating'
 				/>
 				<br />
-				<button onClick={PostData} name="submit" type="submit" value="submit">
+				<button onClick={PostData} name='submit' type='submit' value='submit'>
 					Create
 				</button>
 			</form>
